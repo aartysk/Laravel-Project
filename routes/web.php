@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\NewController;
+Route::get('/post', [NewController::class, 'index']);
+
+
 Route::get('/', function () {
     return view('welcome');
 });
