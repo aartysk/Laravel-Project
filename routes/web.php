@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\NewController;
+use App\Http\Controllers\PostController;
+
 Route::get('/post', [NewController::class, 'index']);
 
 
@@ -24,3 +26,5 @@ Route::get('/', function () {
 Route::get('/page', function () {
     return view('page', ['name' => 'Artis']);
 });
+
+Route::get('/posts', [PostController::class, 'index']);
