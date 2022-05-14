@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,9 +18,19 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        DB::table('posts')->insert([
-            'title' => Str::random(10),
-            'body' => Str::random(10),
+        DB::table('clients')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10).'@gmail.com',
+        ]);
+
+        DB::table('clients')->insert([
+            'name' => Str::random(6),
+            'email' => Str::random(6).'@inbox.lv',
+        ]);
+
+        DB::table('clients')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10).'@lmt.com',
         ]);
 
     }

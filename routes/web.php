@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\NewController;
-Route::get('/post', [NewController::class, 'index']);
+use App\Http\Controllers\ClientController;
+Route::get('/clients', [ClientController::class, 'show']);
 
 
 Route::get('/', function () {
