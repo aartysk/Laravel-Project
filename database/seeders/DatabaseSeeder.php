@@ -3,8 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Models\Clients;
 
 
 class DatabaseSeeder extends Seeder
@@ -14,24 +13,8 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        DB::table('clients')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-        ]);
-
-        DB::table('clients')->insert([
-            'name' => Str::random(6),
-            'email' => Str::random(6).'@inbox.lv',
-        ]);
-
-        DB::table('clients')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@lmt.com',
-        ]);
-
-    }
+        Client::factory()->create();
+}
 }

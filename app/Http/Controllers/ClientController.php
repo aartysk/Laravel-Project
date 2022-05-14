@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\ClientController;
+use App\Models\Clients;
 
 class ClientController extends Controller
 {
-    public function show ()
+    public function show()
+  
     {
-        dd(2);
+        $show = Clients::get();
+        dd($show);
     }
 }
