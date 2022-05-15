@@ -9,7 +9,7 @@ class ClientController extends Controller
     public function show()
   
     {
-        $post = Client::get();
+        $post = Client::get('name');
         dd($post);
     }
 }
