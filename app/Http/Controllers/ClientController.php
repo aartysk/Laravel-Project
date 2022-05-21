@@ -23,29 +23,47 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
-    }
+        $requestData = $request->all();
 
-    public function edit(Client $client): View
-    {
-        return view('Clients.edit');
-    }
+        $client = new Client([
+            'name' => $requestData['name'],
+            'email' => $requestData['email'],
+        ]);
+        $client->save();
 
-    public function update()
-    {
-
-        
+        return redirect()->route('clients.show', ['client' => $client]);
     }
 
     public function show(Client $client): View
     {
-        return view('Clients.show');
+        return view('Clients.show',
+        ['client' => $client,
+    ]);
     }
 
-    public function destroy()
+
+    public function edit(Client $client): View
     {
-
-        
+        return view('Clients.edit',[
+            'client' => $client,
+        ]);
     }
 
+    public function update(Request $request, Client $client)
+    {
+        $requestData = $request->all();
+
+        $client->name = $requestData['name'];
+        $client->email = $requestData['email'];
+        $client->save();
+
+        return redirect()->route('clients.show', ['client' => $client]);
+    }
+
+    public function destroy(Client $client)
+    {
+        $client->delete();
+        return redirect()->route('clients.index');
+
+}
 }

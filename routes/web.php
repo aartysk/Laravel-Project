@@ -20,12 +20,11 @@ Route::controller(ClientController::class)->group(function (){
         Route::get('/create','create');
         Route::post('/create','store')->name('clients.create');
         Route::get('/show/{client}','show')->name('clients.show');
-        Route::get('/edit/{client}','edit')->name('clients.show');
+        Route::get('/edit/{client}','edit')->name('clients.edit');
         Route::post('/edit/{client}','update');
         Route::get('/delete/{client}','destroy')->name('clients.delete');
 });
 });
-
 
 Route::get('/', function () {
     return view('welcome');
