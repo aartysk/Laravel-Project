@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\ClientController;
-Route::get('/clients', [ClientController::class, 'show']);
-
+Route::controller(ClientController::class)->group(function (){
+    Route::prefix('clients')->group(function (){
+        Route::get('/','index')->name('clients.index');
+        Route::get('/create','create');
+        Route::post('/create','store')->name('clients.create');
+        Route::get('/show/{client}','show')->name('clients.show');
+        Route::get('/edit/{client}','edit')->name('clients.edit');
+        Route::post('/edit/{client}','update');
+        Route::get('/delete/{client}','destroy')->name('clients.delete');
+});
+});
 
 Route::get('/', function () {
     return view('welcome');
