@@ -6,16 +6,16 @@
         <th>Actions</th>
     </thead>
     <tbody>
-        @foreach($clients as $client)     
+        @foreach($Clients as $Client)     
             <tr>
-             <td> {{ $client ->id}} </td>
-             <td> {{ $client ->name}} </td>
-             <td> {{ $client ->email}} </td>
+             <td> {{ $Client ->id}} </td>
+             <td> {{ $Client ->name}} </td>
+             <td> {{ $Client ->email}} </td>
              <td> 
                 <a href="{{ route('Clients.create')}}"> Create</a>
-                <a href="{{ route('Clients.show', ['client' =>$client->id]) }}"> Show</a>
-                <a href="{{ route('Clients.create', ['client' =>$client->id]) }}"> Edit</a>
-                <a href="{{ route('Clients.delete', ['client' =>$client->id]) }}"> Delete</a>
+                <a href="{{ route('Clients.show', ['client' =>$Client->id]) }}"> Show</a>
+                <a href="{{ route('Clients.edit', ['client' =>$Client->id]) }}"> Edit</a>
+                <a href="{{ route('Clients.delete', ['client' =>$Client->id]) }}"> Delete</a>
              </td>   
             </tr>    
         @endforeach
