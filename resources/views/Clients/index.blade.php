@@ -12,10 +12,10 @@
              <td> {{ $client ->name}} </td>
              <td> {{ $client ->email}} </td>
              <td> 
-                <a href="{{ route('clients.create')}}"> Create</a>
-                <a href="{{ route('clients.show', ['client' =>$client->id]) }}"> Show</a>
-                <a href="{{ route('clients.create', ['client' =>$client->id]) }}"> Edit</a>
-                <a href="{{ route('clients.create', ['client' =>$client->id]) }}"> Delete</a>
+                <a href="{{ route('Clients.create')}}"> Create</a>
+                <a href="{{ route('Clients.show', ['client' =>$client->id]) }}"> Show</a>
+                <a href="{{ route('Clients.create', ['client' =>$client->id]) }}"> Edit</a>
+                <a href="{{ route('Clients.delete', ['client' =>$client->id]) }}"> Delete</a>
              </td>   
             </tr>    
         @endforeach

@@ -25,13 +25,12 @@ class ClientController extends Controller
     {
         $requestData = $request->all();
 
-        $client = new Client([
-            'name' => $requestData['name'],
-            'email' => $requestData['email'],
-        ]);
+        $client = new Client();
+            $client-> name = $requestData['name'];
+            $client-> email = $requestData['email'];
         $client->save();
 
-        return redirect()->route('clients.show', ['client' => $client]);
+        return redirect()->route('Clients.show', ['client' => $client]);
     }
 
     public function show(Client $client): View
@@ -57,13 +56,13 @@ class ClientController extends Controller
         $client->email = $requestData['email'];
         $client->save();
 
-        return redirect()->route('clients.show', ['client' => $client]);
+        return redirect()->route('Clients.show', ['client' => $client]);
     }
 
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('clients.index');
+        return redirect()->route('Clients.index');
 
 }
 }

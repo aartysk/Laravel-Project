@@ -3,6 +3,6 @@
 <br>
 {{ $client->email }}
 
-<a href="{{ route('clients.index') }}">
+<a href="{{ route('Clients.index') }}">
     Back to Clients page
 </a> 
