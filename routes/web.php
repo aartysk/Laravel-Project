@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 Route::controller(ClientController::class)->group(function (){
     Route::prefix('clients')->group(function (){
-        Route::get('/','index')->name('clients.index');
+        Route::get('/','index')->name('Clients.index');
         Route::get('/create','create');
-        Route::post('/create','store')->name('clients.create');
-        Route::get('/show/{client}','show')->name('clients.show');
-        Route::get('/edit/{client}','edit')->name('clients.edit');
+        Route::post('/create','store')->name('Clients.create');
+        Route::get('/show/{client}','show')->name('Clients.show');
+        Route::get('/edit/{client}','edit')->name('Clients.edit');
         Route::post('/edit/{client}','update');
-        Route::get('/delete/{client}','destroy')->name('clients.delete');
+        Route::get('/delete/{client}','destroy')->name('Clients.delete');
 });
 });
 

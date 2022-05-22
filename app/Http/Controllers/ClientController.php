@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\View\View;
-use Illuminate\http\Request;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -12,8 +12,8 @@ class ClientController extends Controller
   
     {
         return view('Clients.index', [
-            'clients' => Client::get(),
-        ]);
+            'Clients' => Client::get(),
+    ]); 
     }
 
     public function create(): View
@@ -25,45 +25,47 @@ class ClientController extends Controller
     {
         $requestData = $request->all();
 
-        $client = new Client([
+        $Client = new Client ([
             'name' => $requestData['name'],
             'email' => $requestData['email'],
         ]);
-        $client->save();
 
-        return redirect()->route('clients.show', ['client' => $client]);
+        $Client->save();
+
+        return redirect()->route('Clients.show', ['client' => $Client]);
+
     }
 
-    public function show(Client $client): View
+    public function show(Client $Client): View
     {
         return view('Clients.show',
-        ['client' => $client,
+        ['client' => $Client,
     ]);
     }
 
 
-    public function edit(Client $client): View
+    public function edit(Client $Client): View
     {
         return view('Clients.edit',[
-            'client' => $client,
+            'client' => $Client,
         ]);
     }
 
-    public function update(Request $request, Client $client)
+    public function update(Request $request, Client $Client)
     {
         $requestData = $request->all();
 
-        $client->name = $requestData['name'];
-        $client->email = $requestData['email'];
-        $client->save();
+        $Client->name = $requestData['name'];
+        $Client->email = $requestData['email'];
+        $Client->save();
 
-        return redirect()->route('clients.show', ['client' => $client]);
+        return redirect()->route('Clients.show', ['client' => $Client]);
     }
 
-    public function destroy(Client $client)
+    public function destroy(Client $Client)
     {
-        $client->delete();
-        return redirect()->route('clients.index');
+        $Client->delete();
+        return redirect()->route('Clients.index');
 
 }
 }

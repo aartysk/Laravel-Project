@@ -1,4 +1,4 @@
-<form action="clients/edit" method="post"> 
+<form action="/clients/edit/{{$client->id}}" method="post"> 
     @csrf
     
     Name: <input type="text" name="name" value="{{ $client->name}}"><br>

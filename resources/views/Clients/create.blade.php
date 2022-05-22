@@ -1,7 +1,7 @@
-<form action="clients/create" method="post"> 
+<form action="/clients/create" method="post"> 
     @csrf
-    
-    Name: <input type="text" name="name"><br>
-    Email: <input type="text" name="email"><br>
+
+    name: <input type="text" name="name"><br>
+    email: <input type="text" name="email"><br>
     <input type="submit">
     </form>
