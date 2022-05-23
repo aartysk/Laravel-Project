@@ -26,10 +26,17 @@ Route::controller(ClientController::class)->group(function (){
 });
 });
 
+Route::get('/page', function () {
+    return view('page', ['name' => 'Artis']);
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/page', function () {
-    return view('page', ['name' => 'Artis']);
-});
+Route::get('/dashboard', [ClientController::class, 'index'])
+->middleware(['auth'])
+->name('dashboard');
+
+require __DIR__.'/auth.php';
