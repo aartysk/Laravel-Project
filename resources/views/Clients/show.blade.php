@@ -1,3 +1,7 @@
+@extends ('dashboard')
+
+@section ('content')
+
 <br>
 {{ $client->name }}
 <br>
@@ -6,3 +10,5 @@
 <a href="{{ route('Clients.index') }}">
     Back to Clients page
 </a> 
+
+@endsection
