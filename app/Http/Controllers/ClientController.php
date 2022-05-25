@@ -23,7 +23,12 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
-        $requestData = $request->all();
+        $validated = $request->validate([
+            'name' => 'required|unique:posts|max:255',
+            'email' => 'required',
+        ]);
+
+        dd($validated);
 
         $Client = new Client ([
             'name' => $requestData['name'],
