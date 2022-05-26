@@ -3,9 +3,9 @@
 @section ('content')
 
 <br>
-{{ $client->name }}
+<h1>{{ $client->name }}</h1>
 <br>
-{{ $client->email }}
+<p> {{ $client->email }} </p>
 
 <a href="{{ route('Clients.index') }}">
     Back to Clients page

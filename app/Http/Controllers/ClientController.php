@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClientRequest;
 use App\Models\Client;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -18,21 +19,16 @@ class ClientController extends Controller
 
     public function create(): View
     {
+        app()-> setLocale('en');
         return view('Clients.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreClientRequest $StoreClientrequest)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-        ]);
-
-        dd($validated);
-
+        $validatedData = $StoreClientrequest->validated();
         $Client = new Client ([
-            'name' => $requestData['name'],
-            'email' => $requestData['email'],
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
         ]);
 
         $Client->save();
@@ -58,10 +54,15 @@ class ClientController extends Controller
 
     public function update(Request $request, Client $Client)
     {
-        $requestData = $request->all();
 
-        $Client->name = $requestData['name'];
-        $Client->email = $requestData['email'];
+        $validated = $request->validate([
+            'name' => 'required|min:3|max:255',
+            'email' => 'required',
+        ]);
+
+        $Client->name = $validated['name'];
+        $Client->email = $validated['email'];
+        
         $Client->save();
 
         return redirect()->route('Clients.show', ['client' => $Client]);
