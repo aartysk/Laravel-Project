@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CommentController;
+
 Route::controller(ClientController::class)->group(function (){
     Route::prefix('clients')->group(function (){
         Route::get('/','index')->name('Clients.index');
@@ -25,6 +27,13 @@ Route::controller(ClientController::class)->group(function (){
         Route::get('/delete/{client}','destroy')->name('Clients.delete');
 });
 });
+
+Route::controller(CommentController::class)->group(function () {
+    Route::prefix('comments')->group(function () {
+        Route::post('/store', 'store')->name('comments.store');
+    });
+});
+
 
 Route::get('/page', function () {
     return view('page', ['name' => 'Artis']);
