@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\ClientFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Client extends Model
 {
@@ -23,4 +24,11 @@ class Client extends Model
     {
         return new ClientFactory();
     }
+
+    public function comments (): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
 }
+
