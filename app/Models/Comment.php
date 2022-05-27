@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Comment extends Model
 {
@@ -11,11 +11,12 @@ class Comment extends Model
 
         'author',
         'body',
-        'client_id',
+        'commentable_id',
+        'commentable_type',
     ];
 
-    public function Client(): BelongsTo
+    public function commentable(): MorphTo
     {
-        return $this->belongsTo(Client::class);
+        return $this->morphTo();
     }
 }

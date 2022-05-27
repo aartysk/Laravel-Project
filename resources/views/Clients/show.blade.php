@@ -42,7 +42,8 @@
     <div class="form-input">
         <textarea name="body" placeholder="Comment body"> </textarea>
     </div>
-    <input type="hidden" value={{ $client->id }} name="client_id">
+    <input type="hidden" value={{ $client->id }} name="commentable_id">
+    <input type="hidden" value={{ get_class($client) }} name="commentable_type">
     <br>
     <input type="submit">
 

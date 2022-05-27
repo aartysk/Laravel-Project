@@ -12,13 +12,15 @@ class CommentController extends Controller
         $validatedData = $request->validate ([
             'author' => 'string|required',
             'body' => 'required|max:255',
-            'client_id' => 'required',
+            'commentable_id' => 'required',
+            'commentable_type' => 'required',
         ]);
 
         $comment = new Comment([
             'author' => $validatedData['author'],
             'body' => $validatedData['body'],
-            'client_id' => $validatedData['client_id'],
+            'commentable_id' => $validatedData['commentable_id'],
+            'commentable_type' => $validatedData['commentable_type'],
         ]);
 
         $comment->save();
