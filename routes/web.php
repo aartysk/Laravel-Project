@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\IndexController;
+
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/show/{client}', [IndexController::class, 'show']);
+
 
 Route::controller(ClientController::class)->group(function (){
     Route::prefix('clients')->group(function (){
@@ -39,10 +44,6 @@ Route::get('/page', function () {
     return view('page', ['name' => 'Artis']);
 });
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', [ClientController::class, 'index'])
 ->middleware(['auth'])
